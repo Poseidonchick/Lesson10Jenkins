@@ -1,11 +1,13 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.FormPages;
 
 import java.util.Locale;
 
+@Tag("properties")
 public class LessonTenJenkins extends TestBase {
     FormPages formPages = new FormPages();
     String userSubject = "Physics";
