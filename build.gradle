@@ -15,7 +15,7 @@ def allureVersion = "2.14.0",
     junitVersion = "5.8.1",
     ownerVersion = "1.0.4",
     javafakerVersion = "1.0.2",
-    aspectjweaverVersion = "1.9.6",
+    aspectjweaverVersion = "1.9.7",
     slf4jVersion = "1.7.29"
 
 allure {
@@ -46,12 +46,16 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
-    useJUnitPlatform()
     systemProperties(System.getProperties())
-}
+    useJUnitPlatform()
 
-task properties_tests(type: Test) {
-    useJUnitPlatform {
-        includeTags "properties"
+
+    testLogging {
+        lifecycle {
+//            events "started", "failed"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
     }
-}
+    }
+
