@@ -22,6 +22,7 @@ public class TestBase {
         ConfigLoader credentials = ConfigFactory.create(ConfigLoader.class);
         String login = credentials.login();
         String password = credentials.password();
+        String url = credentials.browserUrl();
         Configuration.remote = format("https://%s:%s@%s", login, password, System.getProperty("url"));
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.browserCapabilities = new DesiredCapabilities();
